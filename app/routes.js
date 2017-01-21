@@ -13,6 +13,12 @@ module.exports = function(app) {
     res.render('landing.pug');
   });
 
+  //enum set of names:
+  //'donald_trump', 'hillary_clinton', 'barack_obama'
+  app.get('/landing/donald_trump', function(req, res) {
+    res.render('index.pug');
+  }
+
   app.post('/search', function(req, res){
     var app1 = new Clarifai.App(
       'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
@@ -49,10 +55,11 @@ module.exports = function(app) {
           name = null;
         } else {
           console.log("OKAY");
-          res.redirect('/landing');
+          //res.redirect('/landing');
           pyshell.send(name); // sends the name of the match to the python script
-
+          name.replace(' ', '_');
         }
+        res.redirect('/landing/' + name);
       },
       function(err) {
 
