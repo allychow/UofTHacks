@@ -41,8 +41,9 @@ module.exports = function(app) {
         console.log(name);
         if (max < 0.5) {
           console.log("Error: No match");
+          name = null;
         } else {
-          res.redirect('/landing');
+          res.redirect('/landing/' + name);
           pyshell.send(name); // sends the name of the match to the python script
     
         }
