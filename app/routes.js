@@ -44,16 +44,10 @@ module.exports = function(app) {
           console.log("Error: No match");
           name = null;
         } else {
-<<<<<<< HEAD
-          res.redirect('/landing/' + name);
-          pyshell.send(name); // sends the name of the match to the python script
-    
-=======
           console.log("OKAY");
           res.redirect('/landing');
           pyshell.send(match.name); // sends the name of the match to the python script
 
->>>>>>> c4a1777f5de1c8d109b0580b6b1b8865709c65f3
         }
       },
       function(err) {
