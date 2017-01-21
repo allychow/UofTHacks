@@ -3,6 +3,7 @@ var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
 );
+window.onload = transformIntoImageBytes
 
 var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
 
