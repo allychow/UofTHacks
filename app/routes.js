@@ -13,8 +13,19 @@ module.exports = function(app) {
     res.render('landing.pug');
   });
 
+//<<<<<<< HEAD
   app.post('/search', function(req, res){ // takes the url in the search field and tests it against the clarifai
     var app1 = new Clarifai.App( // allows access to the clarifai app
+//=======
+  //enum set of names:
+  //'donald_trump', 'hillary_clinton', 'barack_obama'
+  app.get('/landing/donald_trump', function(req, res) {
+    res.render('index.pug');
+  }
+
+  app.post('/search', function(req, res){
+    var app1 = new Clarifai.App(
+//>>>>>>> 80b6c596e29b9f2e8e8edfd54cdf0d592cd02893
       'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
       'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
     );
@@ -39,11 +50,17 @@ module.exports = function(app) {
         console.log(name);
         if (max < 0.5) {
           console.log("Error: No match");
+          name = null;
         } else {
           console.log("OKAY");
-          res.redirect('/landing');
+          //res.redirect('/landing');
           pyshell.send(name); // sends the name of the match to the python script
+<<<<<<< HEAD
+=======
+          name.replace(' ', '_');
+>>>>>>> 80b6c596e29b9f2e8e8edfd54cdf0d592cd02893
         }
+        res.redirect('/landing/' + name);
       },
       function(err) {
 
