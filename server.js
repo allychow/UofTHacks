@@ -1,4 +1,4 @@
-/*
+
 var http = require('http');
 var express = require('express');
 var url = require('url');
@@ -47,7 +47,7 @@ app.set('view engine', 'html');
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
- 
+ */
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -164,4 +164,3 @@ const port = 7070;
 
 app.listen(port);
 console.log('Porting on ', {port});
-*/
