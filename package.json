@@ -1,5 +1,6 @@
 {
   "name": "UofTHacks",
+<<<<<<< HEAD
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot"
@@ -8,6 +9,10 @@
     "node": "6.7.0",
     "express-react-views": "4.0.2"
   },
+=======
+  "main": "server.js",
+
+>>>>>>> 2caf965d2e8ea5d5fa911ce9b17faf401ccfb784
   "dependencies": {
     "babel-core": "^6.3.26",
     "babel-eslint": "^6.1.2",
