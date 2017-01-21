@@ -7,14 +7,33 @@ var app = new Clarifai.App(
 
 var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
 
-app.inputs.create({
+/*app.inputs.create({
   url:""+nameOfURL, concepts: [
     {
       id:"donald trump",
       value:false
     }
   ]
-});
+});*/
+
+app.inputs.create([
+    {
+      url: "https://samples.clarifai.com/metro-north.jpg",
+      id: 'train1' // for initializing its concept
+    },
+    {
+      url: "https://samples.clarifai.com/puppy.jpeg",
+      id: 'puppy1' // for initializing its concept (ie creating a new concept)
+    }
+  ]).then(
+    function(response) {
+      // do something with response
+    },
+    function(err) {
+      // there was an error
+    }
+  );
+
 app.models.train("TRUMP").then(
   function(response) {
 
