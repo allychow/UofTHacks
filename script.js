@@ -1,12 +1,15 @@
 var Clarifai = require('clarifai');
 
+// gives access to the application on clarifai
 var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
 );
 
+// declare variable to store string of url to create image from
 var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
 
+// function to create
 app.inputs.create({
   url:""+nameOfURL, concepts: [
     {
