@@ -1,3 +1,4 @@
+/*
 var http = require('http');
 var express = require('express');
 var url = require('url');
@@ -8,13 +9,14 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var request = require('request'); // "Request" library
 
+
+// ALL FOR SPOTIFY
 var stateKey = 'spotify_auth_state';
 var client_id = '25720e94076947c4b2cb51774b04aca3'; // Your client id
 var client_secret = '88eecbaae52c4097b182b3bda046433f'; // Your secret
 var redirect_uri = 'http://localhost:7070/callback/'; // Your redirect uri
 
 var app = express();
-//app.use(express.static(__dirname));
 
 app.use(express.static(__dirname + '/views'))
   .use(cookieParser());
@@ -27,15 +29,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'html');
 
+<<<<<<< HEAD
 var client_id = '25720e94076947c4b2cb51774b04aca3'; // Your client id
 var client_secret = '88eecbaae52c4097b182b3bda046433f'; // Your secret
 var redirect_uri = 'http://localhost:7070/callback'; // Your redirect uri
+=======
+/*var server = http.createServer(function(req, res) {
+    var params = querystring.parse(url.parse(req.url).query);
+    res.writeHead(200, {"Content-type": "text/plain"});
+    if ('firstname' in params && 'lastname' in params) {
+        res.write('Your name is ' + params['firstname'] + ' ' + params['lastname']);
+    }
+    else {
+      //res.render('spotify.html');
+        //res.write('Hello World! in text');
+    }
+    res.end();
+});
+
+>>>>>>> aa8cbcf89bd4ea8d04ef39885fe487532987dcbd
 
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
- */
+ 
 var generateRandomString = function(length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -152,3 +170,4 @@ const port = 7070;
 
 app.listen(port);
 console.log('Porting on ', {port});
+*/
