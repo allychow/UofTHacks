@@ -29,11 +29,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'html');
 
-<<<<<<< HEAD
 var client_id = '25720e94076947c4b2cb51774b04aca3'; // Your client id
 var client_secret = '88eecbaae52c4097b182b3bda046433f'; // Your secret
 var redirect_uri = 'http://localhost:7070/callback'; // Your redirect uri
-=======
+
 /*var server = http.createServer(function(req, res) {
     var params = querystring.parse(url.parse(req.url).query);
     res.writeHead(200, {"Content-type": "text/plain"});

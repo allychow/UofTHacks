@@ -1,4 +1,10 @@
 body {
-    display: flex;
-    justify-content: center;
+    margin: auto;
+    text-align: center;
+    width: 75%;
+}
+
+url {
+    text-align: center;
+    width: 100px;
 }
