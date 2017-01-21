@@ -71,13 +71,16 @@ app.models.predict("TRUMP", [nameOfURL]).then(
 );
 
 
-function performPredictionWith(bytes){
-	app.models.predict(Clarifai.GENERAL_MODEL, {base64: bytes}).then(
+function performPrediction(){
+
+  var bytes = document.getElementbyId("byteText").value
+
+	app.models.predict("TRUMP", {base64: bytes}).then(
     function(response) {
-      alert("This is actually working")
+      //implement prediction output code here
     },
     function(err) {
-      alert("There was an error")
+      
     }
   );
 }
