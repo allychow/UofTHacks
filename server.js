@@ -27,7 +27,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
 var client_id = '25720e94076947c4b2cb51774b04aca3'; // Your client id
 var client_secret = '88eecbaae52c4097b182b3bda046433f'; // Your secret
@@ -166,6 +166,6 @@ app.get('/refresh_token', function(req, res) {
 });
 
 const port = 7070;
-
+require('./app/routes.js')(app);
 app.listen(port);
 console.log('Porting on ', {port});
