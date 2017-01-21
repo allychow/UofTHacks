@@ -7,7 +7,7 @@ var app = new Clarifai.App(
 );
 
 // declare variable to store string of url to create image from
-var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
+var nameOfURL = "http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg";
 
 // function to create
 app.inputs.create({
