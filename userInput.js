@@ -70,20 +70,17 @@ app.models.predict("TRUMP", [nameOfURL]).then(
   }
 );
 
-//app.models.predict("TRUMP", {base64: transformIntoImageBytes()})
 
-function transformIntoImageBytes(){
+function performPrediction(){
 
-  var img = document.getElementById("uploadedImage")
-  var canvas = document.getElementById("previewCanvas")
+  var bytes = document.getElementbyId("byteText").value
 
-  var ctx = canvas.getContext('2d');
-
-  ctx.drawImage(img, 0, 0);
-
-  var mydataURL=canvas.toDataURL('image/png');
-
-  mydataURL = mydataURL.substring(23,mydataURL.count)
-
-  return mydataURL
+	app.models.predict("TRUMP", {base64: bytes}).then(
+    function(response) {
+      //implement prediction output code here
+    },
+    function(err) {
+      
+    }
+  );
 }
