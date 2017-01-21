@@ -1,5 +1,5 @@
 var Clarifai = require('clarifai');
-
+var canvas = document.createElement("mycanvas")
 var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
@@ -69,3 +69,18 @@ app.models.predict("TRUMP", [nameOfURL]).then(
 
   }
 );
+
+function transformIntoImageBytes(typeOfImage){
+
+  var image = document.getElementById('fileUpload');
+
+  var ctx = canvas.getContext('2d');
+
+  ctx.drawImage(image, 0, 0);
+
+  var mydataURL=myCanvas.toDataURL(('image/').concat(typeOfImage));
+
+  mydataURL = mydataURL.substring(23,mydataURL.count)
+
+  return mydataURL
+}
