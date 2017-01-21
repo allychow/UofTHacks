@@ -70,20 +70,14 @@ app.models.predict("TRUMP", [nameOfURL]).then(
   }
 );
 
-//app.models.predict("TRUMP", {base64: transformIntoImageBytes()})
 
-function transformIntoImageBytes(){
-
-  var img = document.getElementById("uploadedImage")
-  var canvas = document.getElementById("previewCanvas")
-
-  var ctx = canvas.getContext('2d');
-
-  ctx.drawImage(img, 0, 0);
-
-  var mydataURL=canvas.toDataURL('image/png');
-
-  mydataURL = mydataURL.substring(23,mydataURL.count)
-
-  return mydataURL
+function performPredictionWith(bytes){
+	app.models.predict(Clarifai.GENERAL_MODEL, {base64: bytes}).then(
+    function(response) {
+      alert("This is actually working")
+    },
+    function(err) {
+      alert("There was an error")
+    }
+  );
 }

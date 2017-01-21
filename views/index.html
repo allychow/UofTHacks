@@ -22,14 +22,35 @@
         <!-- Add your site or application content here -->
         <p>Hello world! This is HTML5 Boilerplate.</p>
 
-        <!-- Drag and Drop functionality-->
+        <input type='file' id='getval' /><br/><br/>
+        <div id='clock'></div>
 
-        <script src="dropzone.js"></script>
+        <style>
+            #clock{
+                background-image:url('');
+                background-size:cover;
+                background-position: center;
+                height: 250px; width: 250px;
+                border: 1px solid #bbb;
+            }
+            .unselectable{
+                 -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+        </style>
 
-        <link rel="stylesheet" href="dropzone.css">
+        <form>
+            <br><br>
+            Image Bytes: <br>
+            <input class="unselectable" type = "text" name = "firstname" id="byteText">
+            <br>
+        </form>
 
-        <form action="/upload-target" class="dropzone"></form>
-
+        <script src="upload.js"</script>
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
