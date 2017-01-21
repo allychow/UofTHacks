@@ -1,11 +1,13 @@
 var Clarifai = require('clarifai');
+var PythonShell = require('python-shell');
+var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
 var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
 );
 
-var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
+var nameOfURL = "http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg";
 
 app.models.predict("TRUMP", [nameOfURL]).then(
   function(response) {
@@ -28,6 +30,10 @@ app.models.predict("TRUMP", [nameOfURL]).then(
     console.log(name);
     if (max < 0.5) {
       console.log("Error: No match");
+    } else {
+      //res.redirect('/landing');
+      pyshell.send(name); // sends the name of the match to the python script
+
     }
   },
   function(err) {
