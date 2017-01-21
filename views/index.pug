@@ -14,23 +14,52 @@ html.no-js(lang='')
   body
     //if lt IE 8
       p.browserupgrade
-        | You are using an
+        | You are using an 
         strong outdated
-        |  browser. Please
+        |  browser. Please 
         a(href='http://browsehappy.com/') upgrade your browser
         |  to improve your experience.
     // Add your site or application content here
     p Hello world! This is HTML5 Boilerplate.
-    
-    form(action='/search', method='post')
-          .form-group
-            label URL
-            input.form-control(type='text', name='URL')
-          
-          button.btn.cyan.btn-warning.btn-lg(type='submit') Search
-    
-    // Google Analytics: change UA-XXXXX-X to be your site's ID.
-    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-    script(src='js/materialize.js')
-    script(src='js/init.js')
-    script(src='script.js')
+    input#getval(type='file')
+    br
+    br
+    #clock
+    style.
+      #clock{
+      background-image:url('');
+      background-size:cover;
+      background-position: center;
+      height: 250px; width: 250px;
+      border: 1px solid #bbb;
+      }
+      .unselectable{
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      visibility: hidden;
+      }
+    form
+      input#byteText.unselectable(type='text', name='firstname')
+      br
+      br
+      button(type='button', onclick='performPrediction()') Make A Prediction
+    script(src='upload.js', <='', script='')
+      <script src="https://code.jquery.com/jquery-1.12.0.min.js">
+    script.
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\\/script>')
+    script(src='js/plugins.js')
+    script(src='js/main.js')
+    script(src='userInput.js', <='', script='')
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+      <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+
