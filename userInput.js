@@ -1,9 +1,9 @@
 var Clarifai = require('clarifai');
-var canvas = document.createElement("mycanvas")
 var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
 );
+window.onload = transformIntoImageBytes
 
 var nameOfURL = "http://pm.gc.ca/sites/pm/files/media/pm_trudeau_600x683.jpg";
 
@@ -70,15 +70,18 @@ app.models.predict("TRUMP", [nameOfURL]).then(
   }
 );
 
-function transformIntoImageBytes(typeOfImage){
+//app.models.predict("TRUMP", {base64: transformIntoImageBytes()})
 
-  var image = document.getElementById('fileUpload');
+function transformIntoImageBytes(){
+
+  var img = document.getElementById("uploadedImage")
+  var canvas = document.getElementById("previewCanvas")
 
   var ctx = canvas.getContext('2d');
 
-  ctx.drawImage(image, 0, 0);
+  ctx.drawImage(img, 0, 0);
 
-  var mydataURL=myCanvas.toDataURL(('image/').concat(typeOfImage));
+  var mydataURL=canvas.toDataURL('image/png');
 
   mydataURL = mydataURL.substring(23,mydataURL.count)
 
