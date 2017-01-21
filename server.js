@@ -27,7 +27,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
 /*var server = http.createServer(function(req, res) {
     var params = querystring.parse(url.parse(req.url).query);
@@ -161,6 +161,6 @@ app.get('/refresh_token', function(req, res) {
 });
 
 const port = 7070;
-
+require('./app/routes.js')(app);
 app.listen(port);
 console.log('Porting on ', {port});

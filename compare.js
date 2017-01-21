@@ -31,7 +31,7 @@ app.models.predict("TRUMP", [nameOfURL]).then(
     if (max < 0.5) {
       console.log("Error: No match");
     } else {
-
+      //res.redirect('/landing');
       pyshell.send(name); // sends the name of the match to the python script
 
     }
