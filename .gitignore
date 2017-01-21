@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+=======
+
+npm-debug.log
+node_modules
+>>>>>>> c4bd2514e059466b76acfe162f56b174107caaf9
