@@ -13,19 +13,14 @@ module.exports = function(app) {
     res.render('landing.pug');
   });
 
-//<<<<<<< HEAD
-  app.post('/search', function(req, res){ // takes the url in the search field and tests it against the clarifai
-    var app1 = new Clarifai.App( // allows access to the clarifai app
-//=======
   //enum set of names:
   //'donald_trump', 'hillary_clinton', 'barack_obama'
-  app.get('/landing/donald_trump', function(req, res) {
+  app.get('/landing/donald%20trump', function(req, res) {
     res.render('index.pug');
-  }
+  });
 
   app.post('/search', function(req, res){
-    var app1 = new Clarifai.App(
-//>>>>>>> 80b6c596e29b9f2e8e8edfd54cdf0d592cd02893
+    var app1 = new Clarifai.App( // allows access to our clarifai application
       'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
       'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
     );
@@ -41,28 +36,26 @@ module.exports = function(app) {
         //console.log(response[data]);
         for (var i = 0; i < (response["outputs"][0]["data"]["concepts"]).length; i++) { // runs through every concept
           // console.log(req.body);
-          if (response["outputs"][0]["data"]["concepts"][i]["value"] > max) {
+          if (response["outputs"][0]["data"]["concepts"][i]["value"] > max) { // finds the greatest comparison value
             max = response["outputs"][0]["data"]["concepts"][i]["value"];
             name = response["outputs"][0]["data"]["concepts"][i]["name"];
           }
         }
-        console.log(max);
-        console.log(name);
-        if (max < 0.5) {
+        // console.log(max);
+        // console.log(name);
+        if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
           console.log("Error: No match");
           name = null;
         } else {
-          console.log("OKAY");
-          //res.redirect('/landing');
+          // console.log("OKAY");
+          // res.redirect('/landing');
           pyshell.send(name); // sends the name of the match to the python script
-<<<<<<< HEAD
-=======
-          name.replace(' ', '_');
->>>>>>> 80b6c596e29b9f2e8e8edfd54cdf0d592cd02893
+
+          //name.replace(' ', '_'); // removes the whitespace in our concept names
         }
-        res.redirect('/landing/' + name);
+        res.redirect('/landing/' + name); // redirects to the landing page no matter what
       },
-      function(err) {
+      function(err) { // error handling
 
       }
     );
