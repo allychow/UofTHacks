@@ -3,10 +3,11 @@ var Clarifai = require('clarifai');
 var PythonShell = require('python-shell');
 var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
-var app = new Clarifai.App(
+var app1 = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
   'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
 );
+
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
@@ -20,7 +21,7 @@ module.exports = function(app) {
   app.post('/search', function(req, res){
     var nameOfURL = req.body;
 
-    app.models.predict("TRUMP", [nameOfURL]).then(
+    app1.models.predict("TRUMP", [""+nameOfURL]).then(
       function(response) {
         //var max = [];
         var max = 0;
@@ -37,15 +38,22 @@ module.exports = function(app) {
             match.name = response["outputs"][0]["data"]["concepts"][i]["name"];
           }
         }
-        console.log(max);
-        console.log(name);
-        if (max < 0.5) {
+        console.log(match.data);
+        console.log(match.name);
+        if (match.data < 0.5) {
           console.log("Error: No match");
           name = null;
         } else {
+<<<<<<< HEAD
           res.redirect('/landing/' + name);
           pyshell.send(name); // sends the name of the match to the python script
     
+=======
+          console.log("OKAY");
+          res.redirect('/landing');
+          pyshell.send(match.name); // sends the name of the match to the python script
+
+>>>>>>> c4a1777f5de1c8d109b0580b6b1b8865709c65f3
         }
       },
       function(err) {
