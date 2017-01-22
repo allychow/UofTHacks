@@ -25,6 +25,12 @@
   align-items: center;
 }
 
+#error {
+    background-image: url("404.png");
+    text-align: center;
+    margin-top: 20%;
+}
+
 #upload {
   padding-top: 10px;
   padding-left: 90px;
@@ -66,6 +72,12 @@ img#logo {
 
 button {
   margin: 10px;
+}
+
+button#errorbutton {
+  height: 100px;
+  width: 200px;
+  border-radius: 4px;
 }
 
 li {

@@ -19,13 +19,13 @@ html.no-js(lang='')
     a(href='/')
       img#logo(src='images/logo.png' )
     div
-      form#inputfield(action='/search', method='post')
+      form(action='/search', method='post')
             .form-group
               label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
               br
               input#line.form-control(type='url', name='URL')
               br
-      button.btn.cyan.btn-warning.btn-lg(type='submit' form="inputfield" ) ANALYZE
+              button.btn.cyan.btn-warning.btn-lg(type='submit' ) ANALYZE
       br
       label OR
       br
@@ -35,6 +35,7 @@ html.no-js(lang='')
         #clock
         style.
           #clock{
+          margin-left: -90px;
           background-image: url('');
           background-size: cover;
           background-position: center;
@@ -59,12 +60,11 @@ html.no-js(lang='')
           reader.readAsDataURL(file);
           }
           }
-        form#inputbytes(action='/searchByBytes', method='post')
+        form(action='/searchByBytes', method='post')
           .form-group
             input#hiddenImageBytes.hidden(type='text', name='hiddenImageBytes')
             br
 
-      button.btn.pink.btn-warning.btn-lg(type='submit' form="inputbytes" ) SUBMIT
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
       script(src='https://code.jquery.com/jquery-2.1.1.min.js')
       script(src='js/materialize.js')
