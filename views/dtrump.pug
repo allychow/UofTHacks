@@ -10,7 +10,7 @@ html.no-js(lang='')
     // Place favicon.ico in the root directory
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
-    link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='/style.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css")
 
   body
@@ -24,13 +24,29 @@ html.no-js(lang='')
             a(href='/landing/hillary%20clinton') Hillary Clinton
           li
             a(href='/landing/barack%20obama') Barack Obama
-      
+    nav
+        .nav-wrapper
+            a.brand-logo.center(href='/') HOME
+            ul#nav-mobile.left.hide-on-med-and-down
+                li
+                    a(href='/landing/hillary%20clinton') Hillary Clinton
+                li.active
+                    a(href='/landing/donald%20trump') Donald Trump
+                li
+                    a(href='/landing/barack%20obama') Barack Obama
 
-    div
-      | IT'S A FLAMING ORANGE CHEETO
-    
-    a(href="/")
-      button(type='button') AGAIN
+    div.container
+      div#description
+        | Fuck
+    div#spread.container
+      a( href="https://www.facebook.com/DonaldTrump/" target="_blank")
+        img#icon( src="/images/fb-icon.png" )
+      img#person( src="/images/trump.png" )
+      a( href="https://twitter.com/realDonaldTrump" target="_blank")
+        img#icon( src="/images/Twitter.png" )
+    //
+      a(href="/")
+        button(type='button') TRY AGAIN
 
       // Other info we want to present
       // A Spot for his facebook/twitter/spotify music theme

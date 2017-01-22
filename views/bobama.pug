@@ -10,15 +10,40 @@ html.no-js(lang='')
     // Place favicon.ico in the root directory
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
-    link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='/style.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css")
-    
-  body#obama
-    div
-      | IT'S OBAMA WHAT A MAN
-    
-    a(href="/")
-      button(type='button') AGAIN
+
+  body
+    //
+      nav
+      .nav-wrapper
+        a.brand-logo(href='/')
+          img(src='/views/logo.png' width="150px")
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='/landing/hillary%20clinton') Hillary Clinton
+          li
+            a(href='/landing/barack%20obama') Barack Obama
+    nav
+        .nav-wrapper
+            a.brand-logo.center(href='/') HOME
+            ul.left.hide-on-med-and-down
+                li
+                    a(href='/landing/hillary%20clinton') Hillary Clinton
+                li
+                    a(href='/landing/donald%20trump') Donald Trump
+                li.active
+                    a(href='/landing/barack%20obama') Barack Obama
+
+    div.container
+      div#description
+        | We're going to be okay
+    div#spread.container
+      a( href="https://www.facebook.com/BarackObama/" target="_blank")
+        img#icon( src="/images/fb-icon.png" )
+      img#person( src="/images/obama.png" )
+      a( href="https://twitter.com/BarackObama" target="_blank")
+        img#icon( src="/images/Twitter.png" )
 
       // Other info we want to present
       // A Spot for his facebook/twitter/spotify music theme

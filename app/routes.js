@@ -57,11 +57,11 @@ module.exports = function(app) {
             name = response["outputs"][0]["data"]["concepts"][i]["name"];
           }
         }
-        // console.log(max);
+        //console.log(max);
         // console.log(name);
         if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
 
-          console.log("Error: No match");
+          console.log("Error: No match", max);
           name = null;
           res.redirect('/error');
 
