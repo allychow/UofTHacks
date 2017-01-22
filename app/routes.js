@@ -18,6 +18,9 @@ module.exports = function(app) {
     res.render('landing.pug');
   });
 
+  app.get('/error', function(req,res){
+    res.render('404.pug');
+  });
   //enum set of names:
   //'donald_trump', 'hillary_clinton', 'barack_obama'
   app.get('/landing/donald%20trump', function(req, res) {
@@ -105,8 +108,11 @@ module.exports = function(app) {
         // console.log(max);
         // console.log(name);
         if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
+
           console.log("Error: No match");
           name = null;
+          res.redirect('/error');
+
         } else {
           // console.log("OKAY");
           // res.redirect('/landing');
@@ -118,8 +124,8 @@ module.exports = function(app) {
         }
         res.redirect('/landing/' + name); // redirects to the landing page no matter what
       },
-      function(err) { // error handling
-
+      function(err){ // error handling
+          res.redirect('/error');
       }
     );
   });

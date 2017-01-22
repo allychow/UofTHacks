@@ -12,23 +12,13 @@ html.no-js(lang='')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
   body#main
-    form(action='/search', method='post')
-      .form-group
-        label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
-        input#line.form-control(type='text', name='URL')
-        br
-        br
-        br
-        button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
-        br
-        br
-    img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png' width="150px")
+    a(href='/')
+      img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png' width="150px")
     form(action='/search', method='post')
           .form-group
             label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
             br
-            br
-            input#line.form-control(type='text', name='URL')
+            input#line.form-control(type='url', name='URL')
             br
             br
             br
@@ -36,49 +26,48 @@ html.no-js(lang='')
             br
             br
 
+    div#upload
+      input#getval(type='file')
+      br
+      br
+      #clock
+      style.
+        #clock{
+        background-image: url('');
+        background-size: cover;
+        background-position: center;
+        height: 150px; width: 150px;
+        border-radius: 50%;
+        }
+        .hidden{
+        display: none;
+        }
+      script.
+        document.getElementById('getval').addEventListener('change', readURL, true);
+        function readURL(){
+        var file = document.getElementById("getval").files[0];
+        var reader = new FileReader();
+        reader.onloadend = function(){
+        document.getElementById('clock').style.backgroundImage = "url(" + reader.result + ")";
+        var bytes = reader.result;
+        bytes = bytes.substring(23,bytes.count);
+        document.getElementById('hiddenImageBytes').value = bytes;
+        }
+        if(file){
+        reader.readAsDataURL(file);
+        }
+        }
+      form(action='/searchByBytes', method='post')
+        .form-group
+          input#hiddenImageBytes.hidden(type='text', name='hiddenImageBytes')
+          br
+          br
+          br
+          br
+
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
-    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-    script(src='js/materialize.js')
-    script(src='js/init.js')
-    input#getval(type='file')
-    br
-    br
-    #clock
-    style.
-      #clock{
-      background-image:url('');
-      background-size:cover;
-      background-position: center;
-      height: 150px; width: 150px;
-      border: 1px solid #bbb;
-      }
-      .hidden{
-      display: none;
-      }
-    script.
-      document.getElementById('getval').addEventListener('change', readURL, true);
-      function readURL(){
-      var file = document.getElementById("getval").files[0];
-      var reader = new FileReader();
-      reader.onloadend = function(){
-      document.getElementById('clock').style.backgroundImage = "url(" + reader.result + ")";
-      var bytes = reader.result;
-      bytes = bytes.substring(23,bytes.count);
-      document.getElementById('hiddenImageBytes').value = bytes;
-      }
-      if(file){
-      reader.readAsDataURL(file);
-      }else{
-      }
-      }
-    form(action='/searchByBytes', method='post')
-      .form-group
-        label#line Base64 Image Bytes
-        input#hiddenImageBytes.hidden(type='text', name='hiddenImageBytes')
-        br
-        br
-        br
-        button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
-        br
-        br
+      script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+      script(src='js/materialize.js')
+      script(src='js/init.js')
+
     html
