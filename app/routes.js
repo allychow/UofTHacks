@@ -153,7 +153,7 @@ module.exports = function(app) {
       'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
     );
     // console.log(req.body);
-    var imageBytes = req.body.imageBytes;
+    var imageBytes = req.body.hiddenImageBytes;
     console.log(req.body);
       // takes the url from the form
 
@@ -172,7 +172,7 @@ module.exports = function(app) {
             name = response["outputs"][0]["data"]["concepts"][i]["name"];
           }
         }
-        // console.log(max);
+         console.log(max);
         // console.log(name);
         if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
           console.log("Error: No match");
@@ -180,8 +180,9 @@ module.exports = function(app) {
         } else {
           // console.log("OKAY");
           // res.redirect('/landing');
+          console.log(name);
+          var pyshell = new PythonShell('search.py');
           pyshell.send(name); // sends the name of the match to the python script
-
           //name.replace(' ', '_'); // removes the whitespace in our concept names
         }
         res.redirect('/landing/' + name); // redirects to the landing page no matter what

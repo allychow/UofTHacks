@@ -69,5 +69,18 @@ app.models.predict("TRUMP", [nameOfURL]).then(
 
   }
 );
-}
+
+
+function performPrediction(){
+
+  var bytes = document.getElementbyId("byteText").value
+
+	app.models.predict("TRUMP", {base64: bytes}).then(
+    function(response) {
+      //implement prediction output code here
+    },
+    function(err) {
+      
+    }
+  );
 }
