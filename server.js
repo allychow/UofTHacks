@@ -21,9 +21,6 @@ var app = express();
 app.use(express.static(__dirname + '/views'))
   .use(cookieParser());
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
-
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
