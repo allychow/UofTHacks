@@ -26,6 +26,8 @@
 }
 
 #upload {
+  padding-top: 10px;
+  padding-left: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +60,7 @@ img#icon {
 }
 
 img#logo {
-  margin: 75px;
+  margin: 50px 75px 75px 75px;
   width: 150px;
 }
 
