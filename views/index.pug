@@ -18,15 +18,17 @@ html.no-js(lang='')
   body#main
     a(href='/')
       img#logo(src='images/logo.png' )
-    div#buttons
+    div
       form#inputfield(action='/search', method='post')
             .form-group
               label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
               br
               input#line.form-control(type='url', name='URL')
               br
-              br
-
+      button.btn.cyan.btn-warning.btn-lg(type='submit' form="inputfield" ) ANALYZE
+      br
+      label OR
+      br
       div#upload
         input#getval(type='file')
         br
@@ -57,7 +59,7 @@ html.no-js(lang='')
           reader.readAsDataURL(file);
           }
           }
-        form(action='/searchByBytes', method='post')
+        form#inputbytes(action='/searchByBytes', method='post')
           .form-group
             input#hiddenImageBytes.hidden(type='text', name='hiddenImageBytes')
             br
