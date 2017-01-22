@@ -11,7 +11,21 @@ html.no-js(lang='')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
-  body#trump
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css")
+
+  body
+    //
+      nav
+      .nav-wrapper
+        a.brand-logo(href='/')
+          img(src='/views/logo.png' width="150px")
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='/landing/hillary%20clinton') Hillary Clinton
+          li
+            a(href='/landing/barack%20obama') Barack Obama
+      
+
     div
       | IT'S A FLAMING ORANGE CHEETO
     
