@@ -1,38 +1,21 @@
 #main {
-  margin: 50px 200px;
   text-align: center;
   background: white;
 }
 
-#trump {
-  margin: 200px;
-  padding-top: 90px;
-  text-align: center;
-  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg');
-  background-size: 100%;
-  background-position: center; 
-}
-
-#clinton {
-  margin: 200px;
-  padding-top: 90px;
-  text-align: center;
-  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg');
-  background-size: 100%;
-  background-position: center; 
-}
-
-#obama {
-  margin: 200px;
-  padding-top: 90px;
-  text-align: center;
-  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg');
-  background-size: 100%;
-  background-position: center; 
+#spread {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #hiddenImageBytes {
    box-shadow: 0 3px 14px black;
+}
+
+#description {
+  text-align: center;
+  margin-top: 50px;
 }
 
 #getval {
@@ -42,7 +25,15 @@
   align-items: center;
 }
 
+#error {
+    background-image: url("404.png");
+    text-align: center;
+    margin-top: 20%;
+}
+
 #upload {
+  padding-top: 10px;
+  padding-left: 90px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,16 +42,45 @@
 #line {
   padding-top: 10px;
   font-size: 16px;
+  width: 70%;
 }
 
 input {
   font-size: 24px;
 }
 
-img {
+img#person {
+  margin: 40px 75px 75px 75px;
+  background-size: cover;
+  background-position: center;
+  height: 400px; width: 400px;
+  border-radius: 50%;
+  box-shadow: 0 3px 14px black;
+}
+
+img#icon {
   margin: 75px;
+  box-shadow: 0 3px 14px grey;
+  border-radius: 51%;
+  width: 100px;
+}
+
+img#logo {
+  margin: 50px 75px 75px 75px;
+  width: 150px;
 }
 
 button {
   margin: 10px;
+}
+
+button#errorbutton {
+  height: 100px;
+  width: 200px;
+  border-radius: 4px;
+}
+
+li {
+  display: block;
+  padding: 0 40px;
 }

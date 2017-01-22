@@ -3,26 +3,58 @@ html.no-js(lang='')
   head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible', content='ie=edge')
-    title
+    title Hillary Clinton
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     // Place favicon.ico in the root directory
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
-    link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
-  body#clinton
-    div
-      | clinton stuff
+    link(href='/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css")
+    link(rel="icon", href="/images/favicon.ico", type="image/x-icon")
 
-    a(href="/")
-      button(type='button') AGAIN
-      
-      // Other info we want to present
-      // A Spot for his facebook/twitter/spotify music theme
-      iframe(src='https://embed.spotify.com/?uri=spotify:track:4ugxsFlBtos09vCNJKs2VH', width='300', height='380', frameborder='0', allowtransparency='true')
+  body
+    //
+      nav
+      .nav-wrapper
+        a.brand-logo(href='/')
+          img(src='/views/logo.png' width="150px")
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href='/landing/hillary%20clinton') Hillary Clinton
+          li
+            a(href='/landing/barack%20obama') Barack Obama
+    nav
+        .nav-wrapper
+            a.brand-logo.center(href='/') HOME
+            ul#nav-mobile.left.hide-on-med-and-down
+                li.active
+                    a(href='/landing/hillary%20clinton') Hillary Clinton
+                li
+                    a(href='/landing/donald%20trump') Donald Trump
+                li
+                    a(href='/landing/barack%20obama') Barack Obama
+            ul.right.hide-on-med-and-down
+                li
+                    a(href="http://internetthoughts.net/results?input=hillary%20clinton" target="_blank") Sentiment Analysis
+                li  
+                    iframe(src='https://embed.spotify.com/?uri=spotify:track:4ugxsFlBtos09vCNJKs2VH', width='80', height='64', frameborder='0', allowtransparency='true')
 
-    // Google Analytics: change UA-XXXXX-X to be your site's ID.
+    div.container
+      div#description
+        p.flow-text FEELS BAD
+        | The image you submitted was determined to be 
+        em
+          strong Hillary Clinton
+        |  through Clarifai's image analysis AI
+    div#spread.container
+      a( href="https://www.facebook.com/HillaryClinton/" target="_blank")
+        img#icon( src="/images/fb-icon.png" )
+      img#person( src="/images/clinton.png" )
+      a( href="https://twitter.com/HillaryClinton" target="_blank")
+        img#icon( src="/images/Twitter.png" )
+
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(src='js/materialize.js')
     script(src='js/init.js')
