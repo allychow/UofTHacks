@@ -27,12 +27,11 @@ html.no-js(lang='')
               br
               button.btn.cyan.btn-warning.btn-lg(type='submit' ) ANALYZE
       br
-      label OR
+      | OR
       br
-      script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-    script(src='js/materialize.js')
-    script(src='js/init.js')
-    input#getval(type='file', multiple='')
+      br
+    div#upload  
+      input#getval(type='file', multiple='')
     br
     br
     #clock0.preview(onclick='removeImage()', name='box')
@@ -115,4 +114,8 @@ html.no-js(lang='')
         button.btn.cyan.btn-warning.btn-lg(type='submit') Train
         br
         br
+        
+        script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+        script(src='js/materialize.js')
+        script(src='js/init.js')
     html
