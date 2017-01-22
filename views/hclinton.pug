@@ -11,25 +11,12 @@ html.no-js(lang='')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
-
-  body#main
-    img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png' width="150px")
-    form(action='/search', method='post')
-          .form-group
-            label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
-            br
-            br
-            input#line.form-control(type='text', name='URL')
-            br
-            br
-            br
-            button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
-            br
-            br
-
+  body#clinton
+    div
+      | clinton stuff
+      // Other info we want to present
+      // A Spot for his facebook/twitter/spotify music theme
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(src='js/materialize.js')
     script(src='js/init.js')
-
-    html
