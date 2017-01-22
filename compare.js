@@ -1,6 +1,6 @@
 var Clarifai = require('clarifai');
-//var PythonShell = require('python-shell');
-//var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
+var PythonShell = require('python-shell');
+var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
 var app = new Clarifai.App(
   'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
@@ -32,7 +32,7 @@ app.models.predict("TRUMP", [nameOfURL]).then(
       console.log("Error: No match");
     } else {
       //res.redirect('/landing');
-      //pyshell.send(name); // sends the name of the match to the python script
+      pyshell.send(name); // sends the name of the match to the python script
 
     }
   },
