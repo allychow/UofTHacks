@@ -1,9 +1,7 @@
 #main {
   margin: 50px 200px;
   text-align: center;
-  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg') no-repeat;
-  background-size: 100%;
-  background-position: fixed;
+  background: white;
 }
 
 #trump {
@@ -15,10 +13,44 @@
   background-position: center; 
 }
 
+#clinton {
+  margin: 200px;
+  padding-top: 90px;
+  text-align: center;
+  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg');
+  background-size: 100%;
+  background-position: center; 
+}
+
+#obama {
+  margin: 200px;
+  padding-top: 90px;
+  text-align: center;
+  background: url('http://www.maximummusicdj.com/wp-content/uploads/2015/11/Maximum-Music-DJ-background.jpg');
+  background-size: 100%;
+  background-position: center; 
+}
+
+#hiddenImageBytes {
+   box-shadow: 0 3px 14px black;
+}
+
+#getval {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #line {
-  padding: 10px;
-  font-size: 18px;
-  color: 	#403d48;
+  padding-top: 10px;
+  font-size: 16px;
 }
 
 input {
@@ -26,5 +58,9 @@ input {
 }
 
 img {
-  margin: 100px;
+  margin: 75px;
+}
+
+button {
+  margin: 10px;
 }
