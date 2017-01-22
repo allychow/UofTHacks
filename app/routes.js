@@ -39,6 +39,10 @@ module.exports = function(app) {
     res.render('bobama.pug');
   });
 
+  app.get('/error', function(req, res) {
+    res.render('404.pug');
+  });
+
     app.post('/searchByBytes', function(req, res){
 
       console.log("sdf")
@@ -70,6 +74,7 @@ module.exports = function(app) {
           if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
             console.log("Error: No match");
             name = null;
+            res.redirect('/error');
           } else {
             // console.log("OKAY");
             // res.redirect('/landing');
@@ -77,11 +82,12 @@ module.exports = function(app) {
             var pyshell = new PythonShell('search.py');
             pyshell.send(name); // sends the name of the match to the python script
             //name.replace(' ', '_'); // removes the whitespace in our concept names
+            res.redirect('/landing/' + name); // redirects to the landing page no matter what
+
           }
-          res.redirect('/landing/' + name); // redirects to the landing page no matter what
         },
         function(err) { // error handling
-
+          res.redirect('/error');
         }
       );
     }
@@ -110,16 +116,17 @@ module.exports = function(app) {
         if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
           console.log("Error: No match");
           name = null;
+          res.redirect('/error');
         } else {
           // console.log("OKAY");
           // res.redirect('/landing');
           var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
           pyshell.send(name)  ; // sends the name of the match to the python script
+          res.redirect('/landing/' + name); // redirects to the landing page no matter what
 
           //name.replace(' ', '_'); // removes the whitespace in our concept names
         }
-        res.redirect('/landing/' + name); // redirects to the landing page no matter what
       },
       function(err) { // error handling
 
@@ -149,6 +156,7 @@ module.exports = function(app) {
       },
       function(err) {
         // there was an error
+        res.redirect('/error');
       }
     );
     app1.inputs.create({
@@ -165,6 +173,8 @@ module.exports = function(app) {
       },
       function(err) {
         // there was an error
+        res.redirect('/error');
+
       }
     );
     app1.inputs.create({
@@ -181,6 +191,8 @@ module.exports = function(app) {
       },
       function(err) {
         // there was an error
+        res.redirect('/error');
+
       }
     );
     app1.inputs.create({
@@ -197,6 +209,8 @@ module.exports = function(app) {
       },
       function(err) {
         // there was an error
+        res.redirect('/error');
+
       }
     );
 
@@ -207,6 +221,8 @@ module.exports = function(app) {
 
       },
       function(err){
+        res.redirect('/error');
+
       }
     );
     res.redirect('/');
