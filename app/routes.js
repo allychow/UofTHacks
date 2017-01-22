@@ -18,9 +18,6 @@ module.exports = function(app) {
     res.render('landing.pug');
   });
 
-  app.get('/error', function(req,res){
-    res.render('404.pug');
-  });
   //enum set of names:
   //'donald_trump', 'hillary_clinton', 'barack_obama'
   app.get('/landing/donald%20trump', function(req, res) {
@@ -43,44 +40,53 @@ module.exports = function(app) {
       'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
     );
     // console.log(req.body);
-    var imageBytes = req.body.hiddenImageBytes;
-    console.log(req.body);
-      // takes the url from the form
-
-    app1.models.predict("TRUMP", imageBytes).then( // calls the predict function for our model
-      function(response) {
-        console.log(response)
-        // console.log("YAY");
-        // console.log(response.status);
-        var max = 0; // variable to store the max data value by concept
-        var name; // stores the name of the person associated with the max data value
-        //console.log(response[data]);
-        for (var i = 0; i < (response["outputs"][0]["data"]["concepts"]).length; i++) { // runs through every concept
-          // console.log(req.body);
-          if (response["outputs"][0]["data"]["concepts"][i]["value"] > max) { // finds the greatest comparison value
-            max = response["outputs"][0]["data"]["concepts"][i]["value"];
-            name = response["outputs"][0]["data"]["concepts"][i]["name"];
-          }
-        }
-         console.log(max);
-        // console.log(name);
-        if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
-          console.log("Error: No match");
-          name = null;
-        } else {
-          // console.log("OKAY");
-          // res.redirect('/landing');
-          console.log(name);
-          var pyshell = new PythonShell('search.py');
-          pyshell.send(name); // sends the name of the match to the python script
-          //name.replace(' ', '_'); // removes the whitespace in our concept names
-        }
-        res.redirect('/landing/' + name); // redirects to the landing page no matter what
-      },
-      function(err) { // error handling
-
+    var count = 0;
+    while(count<4){
+      if (req.body.(hiddenImageBytes.concat(String(count))!=""){
+        count++;
       }
-    );
+    }
+
+    for(var k=0; k<count k++){
+      var imageBytes = req.body.(hiddenImageBytes.concat(String(k))!="");
+      console.log(req.body);
+        // takes the url from the form
+
+      app1.models.predict("TRUMP", imageBytes).then( // calls the predict function for our model
+        function(response) {
+          console.log(response)
+          // console.log("YAY");
+          // console.log(response.status);
+          var max = 0; // variable to store the max data value by concept
+          var name; // stores the name of the person associated with the max data value
+          //console.log(response[data]);
+          for (var i = 0; i < (response["outputs"][0]["data"]["concepts"]).length; i++) { // runs through every concept
+            // console.log(req.body);
+            if (response["outputs"][0]["data"]["concepts"][i]["value"] > max) { // finds the greatest comparison value
+              max = response["outputs"][0]["data"]["concepts"][i]["value"];
+              name = response["outputs"][0]["data"]["concepts"][i]["name"];
+            }
+          }
+           console.log(max);
+          // console.log(name);
+          if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
+            console.log("Error: No match");
+            name = null;
+          } else {
+            // console.log("OKAY");
+            // res.redirect('/landing');
+            console.log(name);
+            var pyshell = new PythonShell('search.py');
+            pyshell.send(name); // sends the name of the match to the python script
+            //name.replace(' ', '_'); // removes the whitespace in our concept names
+          }
+          res.redirect('/landing/' + name); // redirects to the landing page no matter what
+        },
+        function(err) { // error handling
+
+        }
+      );
+    }
   });
 
   app.post('/search', function(req, res){
@@ -108,24 +114,21 @@ module.exports = function(app) {
         // console.log(max);
         // console.log(name);
         if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
-
           console.log("Error: No match");
           name = null;
-          res.redirect('/error');
-
         } else {
           // console.log("OKAY");
           // res.redirect('/landing');
           var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
-          pyshell.send(name); // sends the name of the match to the python script
+          pyshell.send(name)  ; // sends the name of the match to the python script
 
           //name.replace(' ', '_'); // removes the whitespace in our concept names
         }
         res.redirect('/landing/' + name); // redirects to the landing page no matter what
       },
-      function(err){ // error handling
-          res.redirect('/error');
+      function(err) { // error handling
+
       }
     );
   });

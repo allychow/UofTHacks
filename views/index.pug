@@ -13,31 +13,37 @@ html.no-js(lang='')
     link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
   body#main
     a(href='/')
-      img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png' width="150px")
+      img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png', width='150px')
     form(action='/search', method='post')
-          .form-group
-            label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
-            br
-            input#line.form-control(type='url', name='URL')
-            br
-            br
-            br
-            button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
-            br
-            br
-
-    div#upload
-      input#getval(type='file')
+      .form-group
+        label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
+        br
+        input#line.form-control(type='url', name='URL')
+        br
+        br
+        br
+        button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
+        br
+        br
+      // Google Analytics: change UA-XXXXX-X to be your site's ID.
+      script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+      script(src='js/materialize.js')
+      script(src='js/init.js')
+      input#getval(type='file', multiple='')
       br
       br
-      #clock
+      #clock0.preview(onclick='removeImage()', name='box')
+      #clock1.preview(onclick='removeImage()', name='box')
+      #clock2.preview(onclick='removeImage()', name='box')
+      #clock3.preview(onclick='removeImage()', name='box')
       style.
-        #clock{
-        background-image: url('');
-        background-size: cover;
+        .preview{
+        display:inline-block;
+        background-image:url('');
+        background-size:cover;
         background-position: center;
         height: 150px; width: 150px;
-        border-radius: 50%;
+        border: 1px solid #bbb;
         }
         .hidden{
         display: none;
@@ -45,29 +51,52 @@ html.no-js(lang='')
       script.
         document.getElementById('getval').addEventListener('change', readURL, true);
         function readURL(){
-        var file = document.getElementById("getval").files[0];
-        var reader = new FileReader();
-        reader.onloadend = function(){
-        document.getElementById('clock').style.backgroundImage = "url(" + reader.result + ")";
-        var bytes = reader.result;
-        bytes = bytes.substring(23,bytes.count);
-        document.getElementById('hiddenImageBytes').value = bytes;
+        var files = document.getElementById("getval").files;
+        var count = 0;
+        while(files[count]){
+        count++
         }
-        if(file){
-        reader.readAsDataURL(file);
+        var readers = [new FileReader(), new FileReader(), new FileReader(), new FileReader()]
+        readers[count-1].onloadend = function(){
+        for(k=0; k<count; k++){
+        document.getElementById('clock'.concat(String(k))).style.backgroundImage = "url(" + readers[k].result + ")";
+        var bytes = readers[k].result;
+        bytes = bytes.substring(23,bytes.count);
+        document.getElementById('hiddenImageBytes'.concat(String(k))).value=bytes
+        }
+        }
+        for(k=0; k<4; k++){
+        if(files[k]){
+        readers[k].readAsDataURL(files[k]);
+        }else{
+        }
+        }
+        }
+        function removeImage(){
+        var boxes = document.getElementsByName("box")
+        var iden = "none"
+        for(var i=0; i<4; i++){
+        boxes[i].onclick = function(e){
+        if(this.style){
+        this.style.backgroundImage='url("")'
+        if(document.getElementById('hiddenImageBytes'.concat(String(i)))){
+        document.getElementById('hiddenImageBytes'.concat(String(i))).value = ""
+        }
+        }
+        }
         }
         }
       form(action='/searchByBytes', method='post')
         .form-group
-          input#hiddenImageBytes.hidden(type='text', name='hiddenImageBytes')
+          label#line Base64 Image Bytes
+          input#hiddenImageBytes0.hidden(type='text', name='hiddenImageBytes0')
+          input#hiddenImageBytes1.hidden(type='text', name='hiddenImageBytes1')
+          input#hiddenImageBytes2.hidden(type='text', name='hiddenImageBytes2')
+          input#hiddenImageBytes3.hidden(type='text', name='hiddenImageBytes3')
           br
           br
           br
+          button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
           br
-
-    // Google Analytics: change UA-XXXXX-X to be your site's ID.
-      script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-      script(src='js/materialize.js')
-      script(src='js/init.js')
-
-    html
+          br
+      html
