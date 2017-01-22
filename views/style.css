@@ -70,6 +70,10 @@ img#logo {
   width: 150px;
 }
 
+input#getval {
+    text-align: center;
+}
+
 button {
   margin: 10px;
 }
