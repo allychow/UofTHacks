@@ -10,24 +10,19 @@ html.no-js(lang='')
     // Place favicon.ico in the root directory
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
-    link(href='css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
+    link(href='style.css', type='text/css', rel='stylesheet', media='screen,projection')
 
-  body
-    //if lt IE 8
-      p.browserupgrade
-        | You are using an 
-        strong outdated
-        |  browser. Please 
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  to improve your experience.
-    // Add your site or application content here
-    p Hello world! This is HTML5 Boilerplate.
+  body#main
     
     form(action='/search', method='post')
           .form-group
-            label URL
+            label ENTER THE URL OF A PICTURE OF SOMEONE
             input.form-control(type='text', name='URL')
-            button.btn.cyan.btn-warning.btn-lg(type='submit') Search
+            br
+            br
+            button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
+            br
+            br
     
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
