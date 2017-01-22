@@ -29,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'pug');
 
+app.get('/error', function(req,res){
+  res.render('404.pug');
+});
 /*var server = http.createServer(function(req, res) {
     var params = querystring.parse(url.parse(req.url).query);
     res.writeHead(200, {"Content-type": "text/plain"});
@@ -84,10 +87,7 @@ app.get('/callback', function(req, res) {
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect('/#' +
-      querystring.stringify({
-        error: 'state_mismatch'
-      }));
+    res.redirect('/error');
   } else {
     res.clearCookie(stateKey);
     var authOptions = {
@@ -127,10 +127,7 @@ app.get('/callback', function(req, res) {
             refresh_token: refresh_token
           }));
       } else {
-        res.redirect('/#' +
-          querystring.stringify({
-            error: 'invalid_token'
-          }));
+        res.redirect('/error');
       }
     });
   }
@@ -156,6 +153,9 @@ app.get('/refresh_token', function(req, res) {
       res.send({
         'access_token': access_token
       });
+    }
+    else{
+      res.redirect('/error');
     }
   });
 });
