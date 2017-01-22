@@ -2,7 +2,14 @@ var Match = require('../app/models/match.js');
 var Clarifai = require('clarifai');
 var PythonShell = require('python-shell');
 
+var app1 = new Clarifai.App( // allows access to our clarifai application
+  'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
+  'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
+);
+
 module.exports = function(app) {
+
+
 
   /**
    * Generates a random string containing numbers and letters
@@ -35,20 +42,11 @@ module.exports = function(app) {
     app.post('/searchByBytes', function(req, res){
 
       console.log("sdf")
-    var app1 = new Clarifai.App( // allows access to our clarifai application
-      'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
-      'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
-    );
     // console.log(req.body);
-    var count = 0;
-    while(count<4){
-      if (req.body.(hiddenImageBytes.concat(String(count))!=""){
-        count++;
-      }
-    }
 
-    for(var k=0; k<count k++){
-      var imageBytes = req.body.(hiddenImageBytes.concat(String(k))!="");
+    for(var k=0; k<4; k++){
+      if(req.body.global["hiddenImageBytes"+String(count)].length==0){continue;}
+      var imageBytes = req.body.global["hiddenImageBytes"+String(count)]
       console.log(req.body);
         // takes the url from the form
 
@@ -90,10 +88,6 @@ module.exports = function(app) {
   });
 
   app.post('/search', function(req, res){
-    var app1 = new Clarifai.App( // allows access to our clarifai application
-      'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
-      'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
-    );
     // console.log(req.body);
     var nameOfURL = req.body.URL; // takes the url from the form
 
@@ -131,5 +125,90 @@ module.exports = function(app) {
 
       }
     );
+  });
+
+  app.post('/train', function(req,res){
+    console.log("Testing")
+
+    var imageByteArray = [req.body.hiddenImageBytes0,req.body.hiddenImageBytes1,req.body.hiddenImageBytes2,req.body.hiddenImageBytes3]
+    var concept = req.body.concept0;
+
+    console.log(imageByteArray[3])
+
+    app1.inputs.create({
+    base64:imageByteArray[0],
+    concepts: [
+      {
+        id: concept,
+        value: false
+      }
+    ]
+    }).then(
+      function(response) {
+        // do something with response
+      },
+      function(err) {
+        // there was an error
+      }
+    );
+    app1.inputs.create({
+    base64:imageByteArray[1],
+    concepts: [
+      {
+        id: concept,
+        value: false
+      }
+    ]
+    }).then(
+      function(response) {
+        // do something with response
+      },
+      function(err) {
+        // there was an error
+      }
+    );
+    app1.inputs.create({
+    base64:imageByteArray[2],
+    concepts: [
+      {
+        id: concept,
+        value: false
+      }
+    ]
+    }).then(
+      function(response) {
+        // do something with response
+      },
+      function(err) {
+        // there was an error
+      }
+    );
+    app1.inputs.create({
+    base64:imageByteArray[3],
+    concepts: [
+      {
+        id: concept,
+        value: false
+      }
+    ]
+    }).then(
+      function(response) {
+        // do something with response
+      },
+      function(err) {
+        // there was an error
+      }
+    );
+
+
+    app1.models.train("TRUMP").then(
+      function(response){
+        console.log(response)
+
+      },
+      function(err){
+      }
+    );
+    res.redirect('/');
   });
 }
