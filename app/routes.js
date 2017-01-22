@@ -20,10 +20,8 @@ module.exports = function(app) {
 
   //enum set of names:
   //'donald_trump', 'hillary_clinton', 'barack_obama'
-  app.get('/landing/:name', function(req, res) {
-    var file = this.props.params.name;
-    console.log(file);
-    res.render('{file}.pug');
+  app.get('/landing/donald%20trump', function(req, res) {
+    res.render('dtrump.pug');
   });
 
   app.get('/landing/hillary%20clinton', function(req, res) {
