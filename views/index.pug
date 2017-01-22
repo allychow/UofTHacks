@@ -11,29 +11,26 @@ html.no-js(lang='')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css', type='text/css', rel='stylesheet', media='screen,projection')
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet')
     link(href='css/style.css', type='text/css', rel='stylesheet', media='screen,projection')
-
   body
-    //if lt IE 8
+    //
+      if lt IE 8
       p.browserupgrade
-        | You are using an 
-        strong outdated
-        |  browser. Please 
-        a(href='http://browsehappy.com/') upgrade your browser
-        |  to improve your experience.
+      | You are using an
+      strong outdated
+      |  browser. Please
+      a(href='http://browsehappy.com/') upgrade your browser
+      |  to improve your experience.
     // Add your site or application content here
     p Hello world! This is HTML5 Boilerplate.
-    
     form(action='/search', method='post')
-          .form-group
-            label URL
-            input.form-control(type='text', name='URL')
-            button.btn.cyan.btn-warning.btn-lg(type='submit') Search
-    
+      .form-group
+        label URL
+        input.form-control(type='text', name='URL')
+        button.btn.cyan.btn-warning.btn-lg(type='submit') Search
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(src='js/materialize.js')
     script(src='js/init.js')
-    
     html
   body
     .container
@@ -135,7 +132,48 @@ html.no-js(lang='')
       }, false);
       }
       })();
-
-
-    
-    
+    input#getval(type='file')
+    br
+    br
+    #clock
+    style.
+      #clock{
+      background-image:url('');
+      background-size:cover;
+      background-position: center;
+      height: 150px; width: 150px;
+      border: 1px solid #bbb;
+      }
+      .scrollableTextBox{
+      display:none;
+      height:80px;
+      width:200px;
+      font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+      font-size: 82%;
+      overflow:scroll;
+      }
+    script.
+      document.getElementById('getval').addEventListener('change', readURL, true);
+      function readURL(){
+      var file = document.getElementById("getval").files[0];
+      var reader = new FileReader();
+      var imagebytes = null;
+      reader.onloadend = function(){
+      document.getElementById('clock').style.backgroundImage = "url(" + reader.result + ")";
+      imagebytes = reader.result
+      imagebytes = imagebytes.substring(23,imagebytes.count)
+      document.getElementById("imageBytesDisplay").value = imagebytes
+      }
+      if(file){
+      reader.readAsDataURL(file);
+      }else{
+      }
+      }
+    form(action='/searchByBytes', method='post')
+      .form-group
+        label Base64 Image Bytes
+        input#imageBytesDisplay.scrollableTextBox(type='textarea', name='imageBytes')
+        br
+        br
+        button#bytesSearch.btn.cyan.btn-warning.btn-lg(type='submit') Search
+    style.
