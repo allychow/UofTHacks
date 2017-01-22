@@ -37,11 +37,15 @@ html.no-js(lang='')
             ul.right.hide-on-med-and-down
                 li
                     a(href="http://internetthoughts.net/results?input=donald%20trump" target="_blank") Sentiment Analysis
+                li
+                  iframe(src='https://embed.spotify.com/?uri=spotify:track:7dO9OAZUF4LIK5iZ1gROW3', width='80', height='80', frameborder='0', allowtransparency='true')
 
     div.container
       div#description
         p.flow-text YOU'VE GOT TRUMP
-        | The image you submitted was determined to be Donald Trump through Clarifai's image analysis AI
+        | The image you submitted was determined to be 
+        strong Donald Trump 
+        |  through Clarifai's image analysis AI
     div#spread.container
       a( href="https://www.facebook.com/DonaldTrump/" target="_blank")
         img#icon( src="/images/fb-icon.png" )
@@ -55,7 +59,6 @@ html.no-js(lang='')
       // Other info we want to present
       // A Spot for his facebook/twitter/spotify music theme
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
-    iframe(src='https://embed.spotify.com/?uri=spotify:track:7dO9OAZUF4LIK5iZ1gROW3', width='300', height='380', frameborder='0', allowtransparency='true')
 
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(src='js/materialize.js')
