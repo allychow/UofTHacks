@@ -22,6 +22,20 @@ html.no-js(lang='')
         button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
         br
         br
+    img(src='https://cdn.pixabay.com/photo/2016/10/08/18/35/help-1724292_960_720.png' width="150px")
+    form(action='/search', method='post')
+          .form-group
+            label#line ENTER THE URL OF A PICTURE OF SOMEONE YOU WANT TO ANALYZE
+            br
+            br
+            input#line.form-control(type='text', name='URL')
+            br
+            br
+            br
+            button.btn.cyan.btn-warning.btn-lg(type='submit') ANALYZE
+            br
+            br
+
     // Google Analytics: change UA-XXXXX-X to be your site's ID.
     script(src='https://code.jquery.com/jquery-2.1.1.min.js')
     script(src='js/materialize.js')
