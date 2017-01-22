@@ -1,7 +1,7 @@
 var Match = require('../app/models/match.js');
 var Clarifai = require('clarifai');
-var PythonShell = require('python-shell');
-var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
+//var PythonShell = require('python-shell');
+//var pyshell = new PythonShell('search.py'); // search.py opens two web browsers, one of a google search and the other of a sentiment analysis
 
 module.exports = function(app) {
 
