@@ -93,6 +93,49 @@ module.exports = function(app) {
     }
   });
 
+    app.post('/searchByBytes', function(req, res){
+    var app1 = new Clarifai.App( // allows access to our clarifai application
+      'ThQZUpvaf0LjZFmFpNku6LtN3zVEP92P6UYBmGCl',
+      'hUSoLveXXpCZU-cMHZ2N2MGI9gIJERUgQojsLR3H'
+    );
+    // console.log(req.body);
+    var imageBytes = req.body.imageBytes;
+    alert(imageBytes) // takes the url from the form
+
+    app1.models.predict("TRUMP", imageBytes).then( // calls the predict function for our model
+      function(response) {
+        // console.log("YAY");
+        // console.log(response.status);
+        var max = 0; // variable to store the max data value by concept
+        var name; // stores the name of the person associated with the max data value
+        //console.log(response[data]);
+        for (var i = 0; i < (response["outputs"][0]["data"]["concepts"]).length; i++) { // runs through every concept
+          // console.log(req.body);
+          if (response["outputs"][0]["data"]["concepts"][i]["value"] > max) { // finds the greatest comparison value
+            max = response["outputs"][0]["data"]["concepts"][i]["value"];
+            name = response["outputs"][0]["data"]["concepts"][i]["name"];
+          }
+        }
+        // console.log(max);
+        // console.log(name);
+        if (max < 0.5) { // must be greater than a match of 0.5 to be considered a match
+          console.log("Error: No match");
+          name = null;
+        } else {
+          // console.log("OKAY");
+          // res.redirect('/landing');
+          pyshell.send(name); // sends the name of the match to the python script
+
+          //name.replace(' ', '_'); // removes the whitespace in our concept names
+        }
+        res.redirect('/landing/' + name); // redirects to the landing page no matter what
+      },
+      function(err) { // error handling
+
+      }
+    );
+  });
+    
   app.post('/search', function(req, res){
     // console.log(req.body);
     var nameOfURL = req.body.URL; // takes the url from the form
@@ -228,3 +271,4 @@ module.exports = function(app) {
     res.redirect('/');
   });
 }
+
