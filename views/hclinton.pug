@@ -15,16 +15,6 @@ html.no-js(lang='')
     link(rel="icon", href="/images/favicon.ico", type="image/x-icon")
 
   body
-    //
-      nav
-      .nav-wrapper
-        a.brand-logo(href='/')
-          img(src='/views/logo.png' width="150px")
-        ul#nav-mobile.right.hide-on-med-and-down
-          li
-            a(href='/landing/hillary%20clinton') Hillary Clinton
-          li
-            a(href='/landing/barack%20obama') Barack Obama
     nav
         .nav-wrapper
             a.brand-logo.center(href='/') HOME
@@ -37,7 +27,7 @@ html.no-js(lang='')
                     a(href='/landing/barack%20obama') Barack Obama
             ul.right.hide-on-med-and-down
                 li
-                    a(href="http://internetthoughts.net/results?input=hillary%20clinton" target="_blank") Sentiment Analysis
+                    a(href="http://internetthoughts.net/results?input=hillary%20clinton" onClick="return confirm('You are being redirected to an external site. Do you wish to proceed?')" target="_blank") Sentiment Analysis
                 li  
                     iframe(src='https://embed.spotify.com/?uri=spotify:track:4ugxsFlBtos09vCNJKs2VH', width='80', height='64', frameborder='0', allowtransparency='true')
 
